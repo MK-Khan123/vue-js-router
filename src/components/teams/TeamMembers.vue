@@ -1,6 +1,6 @@
 <template>
   <section>
-    <h2>{{  teamName  }}</h2>
+    <h2>{{ teamName }}</h2>
     <ul>
       <user-item v-for="member in members" :key="member.id" :name="member.fullName" :role="member.role"></user-item>
     </ul>
@@ -41,6 +41,12 @@ export default {
   created() {
     this.loadTeamMembers(this.teamId);
     console.log(this.$route.query);
+  },
+  beforeRouteUpdate(to, from, next) {
+    console.log("Team Members component beforeRouteUpdate");
+    console.log(to, from);
+    // this.loadTeamMembers(to.params.teamId);
+    next();
   },
   watch: {
     teamId(newId) {

@@ -20,6 +20,11 @@ export default {
       // this.$router.forward()
     },
   },
+  beforeRouteEnter(to, from, next) {
+    console.log("Users List component beforeRouteEnter");
+    console.log(to, from);
+    next();
+  }
 };
 </script>
 
